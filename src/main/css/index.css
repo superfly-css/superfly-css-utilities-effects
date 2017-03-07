@@ -1,7 +1,7 @@
 /*! superfly-css-utilities-effects | MIT License | https://github.com/superfly-css/superfly-css-utilities-effects/blob/master/LICENSE.md */
 
 @each $percentage in 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 {
-    @each $event in activate, focus, disabled, visited, hover {
+    @each $event in active, focus, disabled, visited, hover {
         .u-on-$(event)-inverse-$(percentage):active {
             filter: invert($(percentage)%);
         }
