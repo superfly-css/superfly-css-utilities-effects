@@ -1,6 +1,6 @@
 {
   "name": "superfly-css-utilities-effects",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Effects utilities",
   "main": "src/main/css/index.css",
   "scripts": {
@@ -36,6 +36,6 @@
   "homepage": "https://github.com/superfly-css/superfly-css-utilities-effects#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "superfly-css-task-build": "^0.1.8"
+    "superfly-css-task-build": "^0.1.9"
   }
 }

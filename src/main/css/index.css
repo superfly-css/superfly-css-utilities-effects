@@ -7,3 +7,9 @@
         }
     }
 }
+
+@for $factor from 1 to 50 {
+  .u-text-shadow-blur-$(factor)x {
+    text-shadow: 0px 0px $(factor)rem rgba(0,0,0,0.90);
+  }
+}
