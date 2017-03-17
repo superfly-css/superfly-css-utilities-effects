@@ -1,15 +1,77 @@
 /*! superfly-css-utilities-effects | MIT License | https://github.com/superfly-css/superfly-css-utilities-effects/blob/master/LICENSE.md */
 
+:root {
+  @each $percentage in 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 {
+      @each $event in active, focus, disabled, visited, hover {
+          --u-on-$(event)-invert-$(percentage) {
+              filter: invert($(percentage)%);
+          }
+      }
+  }
+}
+
 @each $percentage in 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 {
     @each $event in active, focus, disabled, visited, hover {
         .u-on-$(event)-invert-$(percentage):active {
-            filter: invert($(percentage)%);
+            @apply(--u-on-$(event)-invert-$(percentage));
         }
     }
 }
 
+:root {
+  @for $factor from 1 to 50 {
+    --u-text-shadow-blur-$(factor)x {
+      text-shadow: 0px 0px $(factor)rem rgba(0,0,0,0.90);
+    }
+  }
+}
+
 @for $factor from 1 to 50 {
   .u-text-shadow-blur-$(factor)x {
-    text-shadow: 0px 0px $(factor)rem rgba(0,0,0,0.90);
+    @apply(--u-text-shadow-blur-$(factor)x);
   }
+}
+
+
+
+:root {
+  @for $c from 1 to 9 {
+      --u-on-hover-background-color-$c$(c)$(c) {
+          background-color: #$c$(c)$(c) !important;
+      }
+  }
+}
+
+@for $c from 1 to 9 {
+    .u-on-hover-background-color-$c$(c)$(c):hover {
+        @apply(--u-on-hover-background-color-$c$(c)$(c));
+    }
+}
+
+:root {
+  @for $c from 1 to 9 {
+      --u-on-hover-border-color-$c$(c)$(c) {
+          border-color: #$c$(c)$(c) !important;
+      }
+  }
+}
+
+@for $c from 1 to 9 {
+    .u-on-hover-border-color-$c$(c)$(c):hover {
+        @apply(--u-on-hover-border-color-$c$(c)$(c));
+    }
+}
+
+:root {
+  @for $c from 1 to 9 {
+      --u-on-hover-text-color-$c$(c)$(c) {
+          color: #$c$(c)$(c) !important;
+      }
+  }
+}
+
+@for $c from 1 to 9 {
+    .u-on-hover-text-color-$c$(c)$(c):hover {
+        @apply(--u-on-hover-text-color-$c$(c)$(c));
+    }
 }
