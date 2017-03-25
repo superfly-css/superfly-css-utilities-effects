@@ -1,6 +1,6 @@
 {
   "name": "superfly-css-utilities-effects",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Effects utilities",
   "main": "src/main/css/index.css",
   "scripts": {
@@ -43,5 +43,8 @@
     "superfly-css-task-clean": "0.0.1",
     "superfly-css-task-deploy": "0.0.1",
     "superfly-css-task-test": "^0.3.0"
+  },
+  "dependencies": {
+    "superfly-css-variables-colors": "0.0.19"
   }
 }

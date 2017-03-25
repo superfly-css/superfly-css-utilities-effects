@@ -1,62 +1,76 @@
 /*! superfly-css-utilities-effects | MIT License | https://github.com/superfly-css/superfly-css-utilities-effects/blob/master/LICENSE.md */
-
-:root {
-  @each $percentage in 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 {
-      @each $event in active, focus, disabled, visited, hover {
-          --u-on-$(event)-invert-$(percentage) {
-              filter: invert($(percentage)%);
-          }
-          .u-on-$(event)-invert-$(percentage):active {
-              @apply(--u-on-$(event)-invert-$(percentage));
-          }
+@import "superfly-css-variables-colors";
+/* Invert filter effects */
+@each $percentage in 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 {
+    @each $event in active, focus, disabled, visited, hover {
+      :root {
+        --u-on-$(event)-invert-$(percentage) {
+            filter: invert($(percentage)%);
+        }
       }
-  }
+      .u-on-$(event)-invert-$(percentage):$(event) {
+          @apply(--u-on-$(event)-invert-$(percentage));
+      }
+    }
 }
 
-:root {
-  @for $factor from 1 to 50 {
-    --u-text-shadow-blur-$(factor)x {
-      text-shadow: 0px 0px $(factor)rem rgba(0,0,0,0.90);
+/* Blur filter effects */
+@for $factor from 1 to 50 {
+    :root {
+        --u-text-shadow-blur-$(factor)x {
+          text-shadow: 0px 0px $(factor)rem rgba(0,0,0,0.90);
+        }
     }
     .u-text-shadow-blur-$(factor)x {
        @apply(--u-text-shadow-blur-$(factor)x);
     }
-  }
 }
 
-/* On Hover Effects */
-:root {
-  @for $c from 0 to 9 {
-      --u-on-hover-background-color-$c$(c)$(c) {
-          background-color: #$c$(c)$(c) !important;
-      }
-    .u-on-hover-background-color-$c$(c)$(c):hover {
-        @apply(--u-on-hover-background-color-$c$(c)$(c));
+@each $event in active, focus, disabled, visited, hover {
+    @for $factor from 1 to 50 {
+        .u-on-$(event)-text-shadow-blur-$(factor)x:$(event) {
+           @apply(--u-text-shadow-blur-$(factor)x);
+        }
     }
-  }
 }
 
-:root {
-  @for $c from 0 to 9 {
-      --u-on-hover-border-color-$c$(c)$(c) {
-          border-color: #$c$(c)$(c) !important;
-      }
-    .u-on-hover-border-color-$c$(c)$(c):hover {
-        @apply(--u-on-hover-border-color-$c$(c)$(c));
+/* Three digit hex code background color effects */
+@each $event in active, focus, disabled, visited, hover {
+    @for $a from 0 to 9 {
+        @for $b from 0 to 9 {
+              @for $c from 0 to 9 {
+                 .u-on-$(event)-background-color-$(a)$(b)$(c):$(event) {
+                    background-color: var(--color-$(a)$(b)$(c)) !important;
+                  }
+              }
+        }
     }
-  }
 }
 
-
-:root {
-  @for $c from 0 to 9 {
-      --u-on-hover-text-color-$c$(c)$(c) {
-          color: #$c$(c)$(c) !important;
-      }
-    .u-on-hover-text-color-$c$(c)$(c):hover {
-        @apply(--u-on-hover-text-color-$c$(c)$(c));
+/* Three digit hex code border color effects */
+@each $event in active, focus, disabled, visited, hover {
+    @for $a from 0 to 9 {
+        @for $b from 0 to 9 {
+              @for $c from 0 to 9 {
+                 .u-on-$(event)-border-color-$(a)$(b)$(c):$(event) {
+                    border-color: var(--color-$(a)$(b)$(c)) !important;
+                  }
+              }
+        }
     }
-  }
+}
+
+/* Three digit hex code text color effects */
+@each $event in active, focus, disabled, visited, hover {
+    @for $a from 0 to 9 {
+        @for $b from 0 to 9 {
+              @for $c from 0 to 9 {
+                 .u-on-$(event)-text-color-$(a)$(b)$(c):$(event) {
+                    color: var(--color-$(a)$(b)$(c)) !important;
+                  }
+              }
+        }
+    }
 }
 
 /* Transition Effects */
@@ -94,14 +108,13 @@
 }
 
 /* Letter Spacing */
-
-:root {
-  @for $spacing from 0 to 100 {
-      --u-letter-spacing-$(spacing)x {
-          letter-spacing: $(spacing)px !important;
-      }
+@for $spacing from 0 to 100 {
+    :root {
+        --u-letter-spacing-$(spacing)x {
+            letter-spacing: $(spacing)px !important;
+        }
+    }
     .u-letter-spacing-$(spacing)x {
         @apply(--u-letter-spacing-$(spacing)x);
     }
-  }
 }
