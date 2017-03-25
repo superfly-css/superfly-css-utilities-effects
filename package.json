@@ -1,10 +1,13 @@
 {
   "name": "superfly-css-utilities-effects",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Effects utilities",
   "main": "src/main/css/index.css",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "update": "ncu -a && npm i",
+    "clean": "gulp clean",
+    "build": "npm run clean && gulp build:css",
+    "test": "npm run build && gulp test:css"
   },
   "repository": {
     "type": "git",
@@ -36,6 +39,9 @@
   "homepage": "https://github.com/superfly-css/superfly-css-utilities-effects#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "superfly-css-task-build": "^0.1.9"
+    "superfly-css-task-build": "^0.3.0",
+    "superfly-css-task-clean": "0.0.1",
+    "superfly-css-task-deploy": "0.0.1",
+    "superfly-css-task-test": "^0.3.0"
   }
 }

@@ -6,16 +6,11 @@
           --u-on-$(event)-invert-$(percentage) {
               filter: invert($(percentage)%);
           }
+          .u-on-$(event)-invert-$(percentage):active {
+              @apply(--u-on-$(event)-invert-$(percentage));
+          }
       }
   }
-}
-
-@each $percentage in 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 {
-    @each $event in active, focus, disabled, visited, hover {
-        .u-on-$(event)-invert-$(percentage):active {
-            @apply(--u-on-$(event)-invert-$(percentage));
-        }
-    }
 }
 
 :root {
@@ -23,55 +18,90 @@
     --u-text-shadow-blur-$(factor)x {
       text-shadow: 0px 0px $(factor)rem rgba(0,0,0,0.90);
     }
+    .u-text-shadow-blur-$(factor)x {
+       @apply(--u-text-shadow-blur-$(factor)x);
+    }
   }
 }
 
-@for $factor from 1 to 50 {
-  .u-text-shadow-blur-$(factor)x {
-    @apply(--u-text-shadow-blur-$(factor)x);
-  }
-}
-
-
-
+/* On Hover Effects */
 :root {
-  @for $c from 1 to 9 {
+  @for $c from 0 to 9 {
       --u-on-hover-background-color-$c$(c)$(c) {
           background-color: #$c$(c)$(c) !important;
       }
-  }
-}
-
-@for $c from 1 to 9 {
     .u-on-hover-background-color-$c$(c)$(c):hover {
         @apply(--u-on-hover-background-color-$c$(c)$(c));
     }
+  }
 }
 
 :root {
-  @for $c from 1 to 9 {
+  @for $c from 0 to 9 {
       --u-on-hover-border-color-$c$(c)$(c) {
           border-color: #$c$(c)$(c) !important;
       }
-  }
-}
-
-@for $c from 1 to 9 {
     .u-on-hover-border-color-$c$(c)$(c):hover {
         @apply(--u-on-hover-border-color-$c$(c)$(c));
     }
-}
-
-:root {
-  @for $c from 1 to 9 {
-      --u-on-hover-text-color-$c$(c)$(c) {
-          color: #$c$(c)$(c) !important;
-      }
   }
 }
 
-@for $c from 1 to 9 {
+
+:root {
+  @for $c from 0 to 9 {
+      --u-on-hover-text-color-$c$(c)$(c) {
+          color: #$c$(c)$(c) !important;
+      }
     .u-on-hover-text-color-$c$(c)$(c):hover {
         @apply(--u-on-hover-text-color-$c$(c)$(c));
     }
+  }
+}
+
+/* Transition Effects */
+:root {
+  --u-transition-all {
+      transition-property: all !important;
+  }
+}
+
+.u-transition-all {
+  @apply(--u-transition-all);
+}
+
+@each $timing in linear, ease, ease-in, ease-out, step-start, step-end, initial, inherit {
+    :root {
+      --u-transition-timing-$(timing) {
+          transition-property: $(timing) !important;
+      }
+    }
+    .u-transition-timing-$(timing) {
+        @apply(--u-transition-timing-$(timing));
+    }
+}
+
+
+@for $factor from 0 to 50 {
+    :root {
+        --u-transition-duration-$(factor)x {
+            transition-duration: calc(.1*$(factor))s;
+        }
+    }
+    .u-transition-duration-$(factor)x {
+        @apply(--u-transition-duration-$(factor)x);
+    }
+}
+
+/* Letter Spacing */
+
+:root {
+  @for $spacing from 0 to 100 {
+      --u-letter-spacing-$(spacing)x {
+          letter-spacing: $(spacing)px !important;
+      }
+    .u-letter-spacing-$(spacing)x {
+        @apply(--u-letter-spacing-$(spacing)x);
+    }
+  }
 }
