@@ -1,6 +1,20 @@
 /*! superfly-css-utilities-effects | MIT License | https://github.com/superfly-css/superfly-css-utilities-effects/blob/master/LICENSE.md */
+
+/* =======================================
+   EFFECTS
+   0: Invert filter effects
+   1: Blur text filter effects
+   2: Notification colors
+   3: Three digit hex code background color effects
+   4: Three digit hex code border color effects
+   5: Three digit hex code text color effects
+   6: Transition Effects
+   7: Letter spacing
+   ======================================= */
+
 @import "superfly-css-variables-colors";
-/* Invert filter effects */
+
+/* 1 */
 @each $percentage in 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 {
     @each $event in active, focus, disabled, visited, hover {
       :root {
@@ -14,7 +28,7 @@
     }
 }
 
-/* Blur filter effects */
+/* 2 */
 @for $factor from 1 to 50 {
     :root {
         --u-text-shadow-blur-$(factor)x {
@@ -34,7 +48,7 @@
     }
 }
 
-/* Three digit hex code background color effects */
+/* 3 */
 @each $event in active, focus, disabled, visited, hover {
     @for $a from 0 to 9 {
         @for $b from 0 to 9 {
@@ -47,7 +61,7 @@
     }
 }
 
-/* Three digit hex code border color effects */
+/* 4 */
 @each $event in active, focus, disabled, visited, hover {
     @for $a from 0 to 9 {
         @for $b from 0 to 9 {
@@ -60,7 +74,7 @@
     }
 }
 
-/* Three digit hex code text color effects */
+/* 5 */
 @each $event in active, focus, disabled, visited, hover {
     @for $a from 0 to 9 {
         @for $b from 0 to 9 {
@@ -73,7 +87,7 @@
     }
 }
 
-/* Transition Effects */
+/* 6 */
 :root {
   --u-transition-all {
       transition-property: all !important;
