@@ -20,7 +20,7 @@
           filter: invert($(percentage)%);
       }
     }
-    .u--invert-$(percentage):$(event) {
+    .u-invert-$(percentage) {
         @apply(--u-invert-$(percentage));
     }
 }
