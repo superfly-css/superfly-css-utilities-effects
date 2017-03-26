@@ -2,17 +2,28 @@
 
 /* =======================================
    EFFECTS
-   0: Invert filter effects
-   1: Blur text filter effects
-   2: Notification colors
+   0: Invert filter utilities
+   1: Invert filter effects
+   2: Blur text filter effects
    3: Three digit hex code background color effects
-   4: Three digit hex code border color effects
-   5: Three digit hex code text color effects
-   6: Transition Effects
-   7: Letter spacing
+   5: Three digit hex code border color effects
+   6: Three digit hex code text color effects
+   7: Transition Effects
+   8: Letter spacing
    ======================================= */
 
 @import "superfly-css-variables-colors";
+/* 0 */
+@each $percentage in 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 {
+    :root {
+      --u-invert-$(percentage) {
+          filter: invert($(percentage)%);
+      }
+    }
+    .u--invert-$(percentage):$(event) {
+        @apply(--u-invert-$(percentage));
+    }
+}
 
 /* 1 */
 @each $percentage in 10, 20, 30, 40, 50, 60, 70, 80, 90, 100 {
@@ -121,7 +132,7 @@
     }
 }
 
-/* Letter Spacing */
+/* 7 */
 @for $spacing from 0 to 100 {
     :root {
         --u-letter-spacing-$(spacing)x {

@@ -1,6 +1,6 @@
 {
   "name": "superfly-css-utilities-effects",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Effects utilities",
   "main": "src/main/css/index.css",
   "scripts": {
