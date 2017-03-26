@@ -10,6 +10,7 @@
    6: Three digit hex code text color effects
    7: Transition Effects
    8: Letter spacing
+   9: Lighten and darken
    ======================================= */
 
 @import "superfly-css-variables-colors";
@@ -141,5 +142,40 @@
     }
     .u-letter-spacing-$(spacing)x {
         @apply(--u-letter-spacing-$(spacing)x);
+    }
+}
+
+/* 8 */
+@for $percentage from 0 to 100 {
+    :root {
+        --u-background-lighten-$(percentage) {
+              background:
+              linear-gradient(
+                rgba(255, 255, 255,
+                calc($(percentage)/100)),
+                rgba(255, 255, 255,
+                calc($(percentage)/100))
+          ) !important;
+        }
+    }
+    .u-background-lighten-$(percentage) {
+        @apply(--u-background-lighten-$(percentage));
+    }
+}
+
+@for $percentage from 0 to 100 {
+    :root {
+        --u-background-darken-$(percentage) {
+              background:
+              linear-gradient(
+                rgba(0, 0, 0,
+                calc($(percentage)/100)),
+                rgba(0, 0, 0,
+                calc($(percentage)/100))
+          ) !important;
+        }
+    }
+    .u-background-darken-$(percentage) {
+        @apply(--u-background-darken-$(percentage));
     }
 }
