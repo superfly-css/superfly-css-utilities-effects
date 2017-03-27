@@ -5,12 +5,10 @@
    0: Invert filter utilities
    1: Invert filter effects
    2: Blur text filter effects
-   3: Three digit hex code background color effects
-   5: Three digit hex code border color effects
-   6: Three digit hex code text color effects
-   7: Transition Effects
-   8: Letter spacing
-   9: Lighten and darken
+   3: Border, background, and text effects
+   4: Transition Effects
+   5: Letter spacing
+   6: Lighten and darken (Uses gradient opacity)
    ======================================= */
 
 @import "superfly-css-variables-colors";
@@ -62,44 +60,71 @@
 
 /* 3 */
 @each $event in active, focus, disabled, visited, hover {
-    @for $a from 0 to 9 {
-        @for $b from 0 to 9 {
-              @for $c from 0 to 9 {
-                 .u-on-$(event)-background-color-$(a)$(b)$(c):$(event) {
-                    background-color: var(--color-$(a)$(b)$(c)) !important;
-                  }
-              }
+    @each $color in
+    neon-mustard, soft-white, tomato-red, purple-pink, light-orange-red, silver-grey, alice-blue, antique-white, aqua, aqua-marine, azure, beige, bisque, black, blanched-almond, blue, blue-violet, brown, burly-wood, cadet-blue, chartreuse, chocolate, coral, corn-flower-blue, cornsilk, crimson, cyan, dark-blue, dark-cyan, dark-golden-rod, dark-gray, dark-green, dark-khaki, dark-magenta, dark-olive-green, dark-orange, dark-orchid, dark-red, dark-salmon, dark-sea-green, dark-slate-blue, dark-slate-gray, dark-turquoise, dark-violet, deep-pink, deep-sky-blue, dim-gray, dodger-blue, fire-brick, floral-white, forest-green, fuchsia, gainsboro, ghost-white, gold, golden-rod, gray, green, green-yellow, honey-dew, hot-pink, indian-red, indigo, ivory, khaki, lavender, lavender-blush, lawn-green, lemon-chiffon, light-blue, light-coral, light-cyan, light-goldenrod-yellow, light-gray, light-green, light-pink, light-salmon, light-sea-green, light-sky-blue, light-slate-gray, light-steel-blue, light-yellow, lime, lime-green, linen, magenta, maroon, medium-aquamarine, medium-blue, medium-orchid, medium-purple, medium-sea-green, medium-slate-blue, medium-spring-green, medium-turquoise, medium-violet-red, midnight-blue, mint-cream, misty-rose, moccasin, navajo-white, navy, old-lace, olive, olive-drab, orange, orange-red, orchid, pale-golden-rod, pale-green, pale-turquoise, pale-violet-red, papaya-whip, peach-puff, peru, pink, plum, powder-blue, purple, red, rosy-brown, royal-blue, saddle-brown, salmon, sandy-brown, sea-green, sea-shell, sienna, silver, sky-blue, slate-blue, slate-gray, snow, spring-green, steel-blue, tan, teal, thistle, tomato, turquoise, violet, wheat, white, white-smoke, yellow, yellow-green
+    {
+        :root {
+          --u-on-$(event)-text-color-$(color) {
+              color: var(--color-$(color)) !important;
+          }
+        }
+
+        .u-on-$(event)-text-color-$(color):$(event) {
+            @apply(--u-on-$(event)-text-color-$(color));
+        }
+
+        :root {
+          --u-on-$(event)-background-color-$(color) {
+              background-color: var(--color-$(color)) !important;
+          }
+        }
+
+        .u-on-$(event)-background-color-$(color):$(event) {
+            @apply(--u-on-$(event)-background-color-$(color));
+        }
+
+        :root {
+          --u-on-$(event)-border-color-$(color) {
+              border-color: var(--color-$(color)) !important;
+          }
+        }
+
+        .u-on-$(event)-border-color-$(color):$(event) {
+            @apply(--u-on-$(event)-border-color-$(color));
         }
     }
+}
+
+@each $event in active, focus, disabled, visited, hover {
+        @for $a from 0 to 9 {
+            @for $b from 0 to 9 {
+                @for $c from 0 to 9 {
+                    :root {
+                      --u-on-$(event)-background-color-$(a)$(b)$(c) {
+                              background-color: #$(a)$(b)$(c) !important;
+                        }
+                      --u-on-$(event)-border-color-$(a)$(b)$(c) {
+                              border-color: #$(a)$(b)$(c) !important;
+                        }
+                      --u-on-$(event)-text-color-$(a)$(b)$(c) {
+                              background-color: #$(a)$(b)$(c) !important;
+                        }
+                    }
+                   .u-on-$(event)-background-color-$(a)$(b)$(c):$(event) {
+                      background-color: var(--color-$(a)$(b)$(c)) !important;
+                    }
+                   .u-on-$(event)-text-color-$(a)$(b)$(c):$(event) {
+                      color: var(--color-$(a)$(b)$(c)) !important;
+                    }
+                   .u-on-$(event)-border-color-$(a)$(b)$(c):$(event) {
+                      border-color: var(--color-$(a)$(b)$(c)) !important;
+                    }
+                }
+            }
+        }
 }
 
 /* 4 */
-@each $event in active, focus, disabled, visited, hover {
-    @for $a from 0 to 9 {
-        @for $b from 0 to 9 {
-              @for $c from 0 to 9 {
-                 .u-on-$(event)-border-color-$(a)$(b)$(c):$(event) {
-                    border-color: var(--color-$(a)$(b)$(c)) !important;
-                  }
-              }
-        }
-    }
-}
-
-/* 5 */
-@each $event in active, focus, disabled, visited, hover {
-    @for $a from 0 to 9 {
-        @for $b from 0 to 9 {
-              @for $c from 0 to 9 {
-                 .u-on-$(event)-text-color-$(a)$(b)$(c):$(event) {
-                    color: var(--color-$(a)$(b)$(c)) !important;
-                  }
-              }
-        }
-    }
-}
-
-/* 6 */
 :root {
   --u-transition-all {
       transition-property: all !important;
@@ -133,7 +158,7 @@
     }
 }
 
-/* 7 */
+/* 5 */
 @for $spacing from 0 to 100 {
     :root {
         --u-letter-spacing-$(spacing)x {
@@ -145,7 +170,7 @@
     }
 }
 
-/* 8 */
+/* 6 */
 @for $percentage from 0 to 100 {
     :root {
         --u-background-lighten-$(percentage) {
