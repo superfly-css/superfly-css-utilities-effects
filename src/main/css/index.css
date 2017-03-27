@@ -218,7 +218,7 @@
     .u-background-darken-$(percentage) {
         @apply(--u-background-darken-$(percentage));
     }
-    .u-background-darken-$(percentage) {
+    .u-border-darken-$(percentage) {
         @apply(--u-border-darken-$(percentage));
     }
     .u-border-lighten-$(percentage) {
