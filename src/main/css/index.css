@@ -170,6 +170,20 @@
     }
 }
 
+@each $event in active, focus, disabled, visited, hover {
+    @for $spacing from 0 to 100 {
+        :root {
+            --u-on-$(event)-letter-spacing-$(spacing)x {
+                letter-spacing: $(spacing)px !important;
+            }
+        }
+        .u-on-$(event)-letter-spacing-$(spacing)x:$(event) {
+            @apply(--u-on-$(event)-letter-spacing-$(spacing)x);
+        }
+    }
+}
+
+
 /* 6 */
 @for $percentage from 0 to 100 {
     :root {
